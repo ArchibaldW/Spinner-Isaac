@@ -1,0 +1,100 @@
+:root {
+  --deg: 0deg;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  6% {
+    transform: rotate(-24deg);
+  }
+  100% {
+    transform: rotate(var(--deg));
+  }
+}
+#wheelOfFortune {
+  background-color: transparent;
+  position: relative;
+}
+#wheelOfFortune #spinner {
+  width: 700px;
+  height: 700px;
+  background: #fff;
+  position: relative;
+  margin: 20px 0 0 500px;
+  border-radius: 100%;
+  overflow: hidden;
+  animation-duration: 15s;
+  animation-fill-mode: forwards;
+  animation-name: spin;
+  animation-timing-function: cubic-bezier(0.04, 0.07, 0.13, 1);
+}
+#wheelOfFortune #spinner:after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 330px;
+  height: 330px;
+  background-color: transparent;
+  border-radius: 100%;
+  left: 185px;
+  top: 185px;
+}
+#wheelOfFortune #spinner .slice {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  transform-origin: bottom right;
+}
+#wheelOfFortune #spinner .slice.positif:after {
+  background-color: #073589;
+}
+#wheelOfFortune #spinner .slice.neutre:after {
+  background-color: #2C3037;
+}
+#wheelOfFortune #spinner .slice.negatif:after {
+  background-color: #7D0600;
+}
+#wheelOfFortune #spinner .slice.MOOOOOORT:after {
+  background-color: black;
+}
+#wheelOfFortune #spinner .slice:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 525px;
+  height: 350px;
+  display: block;
+  content: "";
+  transform-origin: bottom right;
+  transform: skewX(var(--part));
+}
+#wheelOfFortune #spinner .slice .label {
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  padding-left: 10px;
+  text-align: left;
+  color: #ffffff;
+  width: 290px;
+  transform: rotate(7.2deg);
+  font-size: 0.8em;
+  bottom: 7px;
+}
+#wheelOfFortune #arrow {
+  position: absolute;
+  top: 270px;
+  left: 330px;
+  width: 200px;
+}
+#wheelOfFortune #cacheMimi {
+  position: absolute;
+  top: 210px;
+  left: 710px;
+  width: 250px;
+}
+
+/*# sourceMappingURL=spinner.css.map */

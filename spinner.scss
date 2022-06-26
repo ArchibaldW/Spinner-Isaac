@@ -1,0 +1,116 @@
+$radius:350px;
+$n:25;
+
+:root{
+    --deg: 0deg;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg)
+	}
+
+	6% {
+		transform: rotate(-24deg)
+	}
+
+
+	100% {
+		transform: rotate(var(--deg))
+	}
+}
+
+#wheelOfFortune {
+	background-color: transparent;
+	position: relative;
+
+	#spinner {
+		width: 2*$radius;
+		height: 2*$radius;
+		background: #fff;
+		position: relative;
+		margin: 20px 0 0 500px;
+		border-radius: 100%;
+		overflow: hidden;
+		animation-duration: 15s;
+		animation-fill-mode: forwards;
+		animation-name: spin;
+		animation-timing-function: cubic-bezier(.04, .07, .13, 1);
+
+		&:after {
+			position: absolute;
+			display: block;
+			content: "";
+			width: $radius - 20px;
+			height: $radius - 20px;
+			background-color: transparent;
+			border-radius: 100%;
+			left: ($radius + 20px)/2;
+			top: ($radius + 20px)/2;
+
+		}
+
+		.slice {
+			position: absolute;
+			width: $radius;
+			height: $radius;
+			//background-color: #55f5;
+			top: 0;
+			left: 0;
+			transform-origin: bottom right;
+
+			&.positif:after {
+				background-color: #073589;
+			}
+
+			&.neutre:after {
+				background-color: #2C3037;
+			}
+
+			&.negatif:after {
+				background-color: #7D0600;
+			}
+            &.MOOOOOORT:after{
+                background-color: black;
+            }
+
+			&:after {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 1.5*$radius;
+				height: $radius;
+				display: block;
+				content: "";
+				transform-origin: bottom right;
+                transform: skewX(var(--part));
+                
+			}
+			.label {
+				z-index: 5;
+				position: absolute;
+				left: 0;
+				padding-left: 10px;
+				text-align: left;
+				color: #ffffff;
+				width: $radius - 60px;
+                transform: rotate(180deg/$n);
+                font-size: 0.8em;
+				bottom: $radius/(2*$n);
+			}
+		}
+	}
+
+	#arrow {
+		position: absolute;
+        top: 270px;
+        left: 330px;
+        width: 200px;
+	}
+    #cacheMimi{
+		position: absolute;
+        top: 210px;
+        left: 710px;
+        width: 250px;
+	}
+}
